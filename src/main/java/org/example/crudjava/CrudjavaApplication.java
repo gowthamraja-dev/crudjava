@@ -1,15 +1,20 @@
 package org.example.crudjava;
 
+import org.example.crudjava.infrastructure.kafka.KafkaClientProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
+@EnableConfigurationProperties(KafkaClientProperties.class)
 public class CrudjavaApplication {
 
-    public static void main(String[] args) {
-        System.out.println("starting CrudjavaApplication");
-        SpringApplication.run(CrudjavaApplication.class, args);
-        System.out.println("CrudjavaApplication started");
-    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(CrudjavaApplication.class);
 
+    public static void main(String[] args) {
+        SpringApplication.run(CrudjavaApplication.class, args);
+        LOGGER.info("CrudjavaApplication started");
+    }
 }
